@@ -1,7 +1,10 @@
-import React from "react";
-import useStorybookMocks from "../../.storybook/useStorybookMocks";
-import App from "./App";
 import * as mocks from "../../.storybook/mocks";
+
+import React, { useContext } from "react";
+
+import App from "./App";
+import { AuthContext } from "../context/AuthContext";
+import useStorybookMocks from "../../.storybook/useStorybookMocks";
 
 export default {
   title: "App",
@@ -26,5 +29,11 @@ export const Admin = (args) => {
   useStorybookMocks({
     user: mocks.users.admin,
   });
+  return <App {...args} />;
+};
+
+export const AuthTest = (args) => {
+  const auth = useContext(AuthContext);
+  console.log(auth);
   return <App {...args} />;
 };
