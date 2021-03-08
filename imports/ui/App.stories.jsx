@@ -34,6 +34,8 @@ export const Admin = (args) => {
 
 export const AuthTest = (args) => {
   const auth = useContext(AuthContext);
-  console.log(auth);
+  useStorybookMocks({
+    user: mocks.users[auth],
+  });
   return <App {...args} />;
 };
